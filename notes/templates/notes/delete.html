@@ -1,0 +1,21 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" />
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
+
+<main class="container">
+  <h1 class="page-title">Tem certeza que deseja excluir "{{ note.title }}"?</h1>
+
+  <div class="confirm-actions">
+    <form method="post">
+      {% csrf_token %}
+      <button class="btn btn-danger" type="submit">Excluir</button>
+    </form>
+    <a class="btn btn-secondary" href="{% url 'index' %}">Cancelar</a>
+  </div>
+</main>
+{% endblock %}

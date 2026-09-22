@@ -1,4 +1,6 @@
 env/
+db.sqlite3
+staticfiles/
 *.egg-info
 *.pot
 *.py[co]

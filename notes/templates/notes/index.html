@@ -21,8 +21,18 @@
       name="detalhes"
       placeholder="Digite o conteúdo..."
     ></textarea>
+    <input
+      class="form-card-title"
+      type="text"
+      name="tag"
+      placeholder="Tag (opcional)"
+    />
     <button class="btn" type="submit">Criar</button>
   </form>
+
+  <div class="form-actions" style="width: 580px; max-width: 100%; margin: 0 auto 40px;">
+    <a class="btn btn-secondary" href="{% url 'tags' %}">Ver tags</a>
+  </div>
 
   <div class="card-container">
     {% for note in notes %}
@@ -30,6 +40,15 @@
       <h3 class="card-title">{{ note.title }}</h3>
       <div class="card-content">
         <p>{{ note.content }}</p>
+      </div>
+      {% if note.tag %}
+      <div class="card-content">
+        <p>#{{ note.tag.nome }}</p>
+      </div>
+      {% endif %}
+      <div class="card-actions">
+        <a class="card-action" href="{% url 'edit' note.id %}">Editar</a>
+        <a class="card-action" href="{% url 'delete' note.id %}">Excluir</a>
       </div>
     </div>
     {% endfor %}
